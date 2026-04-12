@@ -18,6 +18,9 @@ const CONTACT_EMAILS = [
   "adrian@paulsen.dev",
 ];
 
+const footerLinkFocus =
+  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark";
+
 export function Footer() {
   return (
     <footer
@@ -51,15 +54,15 @@ export function Footer() {
         </div>
 
         <div className="relative flex flex-1 flex-col justify-between px-5 pt-8 pb-6 md:px-10 lg:px-16 lg:pt-12 lg:pb-8">
-          <div className="mx-auto w-full max-w-350">
+          <div className="mx-auto w-full max-w-page">
             <ScrollReveal>
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-12">
+              <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 md:grid-cols-12 md:gap-x-12 md:gap-y-0">
                 {/* Brand */}
-                <div className="md:col-span-4">
+                <div className="sm:col-span-2 md:col-span-4">
                   <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em]">
                     Paulsen
                   </p>
-                  <p className="mt-3 font-mono text-[12px] leading-relaxed text-neutral-500">
+                  <p className="mt-3 max-w-xs font-mono text-[12px] leading-relaxed text-neutral-500">
                     Frontend development studio.
                     <br />
                     Websites that move.
@@ -67,16 +70,16 @@ export function Footer() {
                 </div>
 
                 {/* Pages */}
-                <div className="md:col-span-2">
+                <div className="sm:col-span-1 md:col-span-2">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-600">
                     Pages
                   </p>
-                  <ul className="mt-3 space-y-2">
+                  <ul className="mt-3 space-y-2.5">
                     {PAGES.map((link) => (
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          className="font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white"
+                          className={`inline-block font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white ${footerLinkFocus}`}
                         >
                           {link.label}
                         </a>
@@ -86,16 +89,16 @@ export function Footer() {
                 </div>
 
                 {/* Socials */}
-                <div className="md:col-span-2">
+                <div className="sm:col-span-1 md:col-span-2">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-600">
                     Socials
                   </p>
-                  <ul className="mt-3 space-y-2">
+                  <ul className="mt-3 space-y-2.5">
                     {SOCIALS.map((link) => (
                       <li key={link.label}>
                         <a
                           href={link.href}
-                          className="font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white"
+                          className={`inline-block font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white ${footerLinkFocus}`}
                         >
                           {link.label}
                         </a>
@@ -105,23 +108,23 @@ export function Footer() {
                 </div>
 
                 {/* Contact */}
-                <div className="md:col-span-4">
+                <div className="sm:col-span-2 md:col-span-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-600">
                     Contact
                   </p>
-                  <ul className="mt-3 space-y-2">
+                  <ul className="mt-3 space-y-2.5">
                     {CONTACT_EMAILS.map((email) => (
                       <li key={email}>
                         <a
                           href={`mailto:${email}`}
-                          className="font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white"
+                          className={`inline-block break-all font-mono text-[12px] text-neutral-500 transition-colors duration-200 hover:text-white ${footerLinkFocus}`}
                         >
                           {email}
                         </a>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 flex items-center gap-2">
+                  <div className="mt-5 flex items-center gap-2">
                     <span className="relative flex h-2 w-2">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />

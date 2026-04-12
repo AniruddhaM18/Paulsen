@@ -28,10 +28,13 @@
   --max-width-page: 1400px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* In @layer base so Tailwind padding utilities (e.g. px-*) are not overridden */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 /* Body: Geist Sans. Use font-mono on labels, nav, metadata. */

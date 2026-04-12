@@ -17,6 +17,9 @@ const SOCIALS = [
   { label: "GitHub", href: "#" },
 ];
 
+const linkFocus =
+  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,7 +58,7 @@ export function Header() {
       <PageContainer className="flex h-[4.25rem] items-center justify-between lg:h-16">
         <a
           href="#"
-          className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em]"
+          className={`font-mono text-[13px] font-semibold uppercase tracking-[0.15em] ${linkFocus}`}
         >
           Paulsen
         </a>
@@ -72,7 +75,7 @@ export function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:text-foreground"
+                className={`font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:text-foreground ${linkFocus}`}
               >
                 {link.label}
               </a>
@@ -90,7 +93,7 @@ export function Header() {
               Accepting Projects
             </span>
           </div>
-          <Button href="#contact" variant="primary" size="sm">
+          <Button href="#contact" variant="primary" size="xs">
             Let&apos;s work together
           </Button>
         </div>
@@ -127,7 +130,7 @@ export function Header() {
                 </div>
                 <a
                   href="mailto:contact@paulsen.dev"
-                  className="mt-3 block font-mono text-[12px] text-muted transition-colors duration-200 hover:text-foreground"
+                  className={`mt-3 block font-mono text-[12px] text-muted transition-colors duration-200 hover:text-foreground ${linkFocus}`}
                 >
                   contact@paulsen.dev
                 </a>
@@ -138,7 +141,7 @@ export function Header() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
                   Featured Project
                 </p>
-                <a href="#contact" className="group mt-4 block">
+                <a href="#contact" className={`group mt-4 block ${linkFocus}`}>
                   <div className="aspect-[16/9] w-full overflow-hidden rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 transition-transform duration-500 group-hover:scale-[1.02]" />
                   <p className="mt-3 font-mono text-[13px] font-medium text-foreground">
                     WKNDHRS
@@ -169,7 +172,7 @@ export function Header() {
                       <a
                         key={social.label}
                         href={social.href}
-                        className="font-mono text-[12px] text-muted transition-colors duration-200 hover:text-foreground"
+                        className={`font-mono text-[12px] text-muted transition-colors duration-200 hover:text-foreground ${linkFocus}`}
                       >
                         {social.label}
                       </a>

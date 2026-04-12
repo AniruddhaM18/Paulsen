@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "./Button";
 
 const NAV_LINKS = [
   { label: "Home", href: "#" },
   { label: "Contact", href: "#contact" },
 ];
+
+const linkFocus =
+  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -14,9 +18,11 @@ export function MobileMenu() {
   return (
     <div className="lg:hidden">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="relative z-50 flex h-10 w-10 items-center justify-center"
+        className="relative z-50 flex h-10 w-10 items-center justify-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         aria-label="Toggle menu"
+        aria-expanded={open}
       >
         <div className="flex flex-col gap-[5px]">
           <span
@@ -57,20 +63,22 @@ export function MobileMenu() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  className="font-mono text-3xl font-light text-white transition-colors hover:text-accent"
+                  className={`font-mono text-3xl font-light text-white transition-colors hover:text-accent ${linkFocus}`}
                 >
                   {link.label}
                 </motion.a>
               ))}
             </nav>
             <div className="mt-16">
-              <a
+              <Button
                 href="#contact"
+                variant="primary"
+                size="xs"
+                className="!tracking-[0.2em] focus-visible:ring-offset-bg-dark"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center rounded-full bg-accent px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white"
               >
                 Let&apos;s work together
-              </a>
+              </Button>
             </div>
           </motion.div>
         )}
