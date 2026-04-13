@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syncopate } from "next/font/google";
+import { Geist, Geist_Mono, Syncopate, Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} scroll-smooth`}
+      className={cn("scroll-smooth", geistSans.variable, geistMono.variable, syncopate.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         {children}
