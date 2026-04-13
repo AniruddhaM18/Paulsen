@@ -27,10 +27,10 @@ export function Button({
 
   const variants = {
     primary:
-      `bg-accent-hover text-white hover:brightness-110 active:brightness-95 ${focusRing}`,
+      `bg-secondary text-secondary-foreground hover:bg-accent-hover active:brightness-95 ${focusRing}`,
     outline:
       `border border-foreground/20 text-foreground hover:border-foreground/40 hover:bg-foreground/5 ${focusRing}`,
-    ghost: `text-muted hover:text-foreground ${focusRing}`,
+    ghost: `text-muted-foreground hover:text-foreground ${focusRing}`,
   };
 
   const classes = `inline-flex items-center justify-center overflow-hidden rounded-full font-mono uppercase leading-normal tracking-[0.15em] transition-all duration-300 ${sizes[size]} ${variants[variant]} ${className}`;

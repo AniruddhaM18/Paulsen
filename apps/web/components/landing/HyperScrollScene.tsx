@@ -222,7 +222,7 @@ export function HyperScrollScene() {
           trans += ` rotateZ(${item.rot}deg)`;
           if (Math.abs(velocityRef.current) > 1) {
             const offset = velocityRef.current * 2;
-            item.el.style.textShadow = `${offset}px 0 red, ${-offset}px 0 cyan`;
+            item.el.style.textShadow = `${offset}px 0 #4ade80, ${-offset}px 0 #15803d`;
           } else {
             item.el.style.textShadow = "none";
           }

@@ -21,7 +21,7 @@ const TOP_REVEAL_PX = 18;
 const SCROLL_DELTA_PX = 8;
 
 const linkFocus =
-  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark";
+  "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 export function Header() {
   const [hiddenByScroll, setHiddenByScroll] = useState(false);
@@ -70,7 +70,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border-dark bg-bg-dark/85 backdrop-blur-xl transition-transform duration-300 ease-out will-change-transform ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl transition-transform duration-300 ease-out will-change-transform ${
         barVisible
           ? "translate-y-0"
           : "-translate-y-full pointer-events-none"
@@ -79,7 +79,7 @@ export function Header() {
       <PageContainer className="flex h-[4.25rem] items-center justify-between lg:h-16">
         <a
           href="#"
-          className={`font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-white ${linkFocus}`}
+          className={`font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-foreground ${linkFocus}`}
         >
           Paulsen
         </a>
@@ -96,7 +96,7 @@ export function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`font-mono text-[11px] uppercase tracking-[0.15em] text-white/70 transition-colors duration-200 hover:text-white ${linkFocus}`}
+                className={`font-mono text-[11px] uppercase tracking-[0.15em] text-foreground/70 transition-colors duration-200 hover:text-foreground ${linkFocus}`}
               >
                 {link.label}
               </a>
@@ -107,19 +107,14 @@ export function Header() {
         <div className="hidden items-center gap-5 lg:flex">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/60">
+            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
               Accepting Projects
             </span>
           </div>
-          <Button
-            href="#contact"
-            variant="primary"
-            size="xs"
-            className="focus-visible:ring-offset-bg-dark"
-          >
+          <Button href="#contact" variant="primary" size="xs">
             Let&apos;s work together
           </Button>
         </div>
@@ -135,28 +130,28 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="hidden overflow-hidden border-t border-border-dark bg-bg-dark/95 backdrop-blur-xl lg:block"
+            className="hidden overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:block"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <PageContainer className="grid grid-cols-3 gap-12 py-10">
               {/* Left: Availability */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   Status
                 </p>
                 <div className="mt-4 flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
                   </span>
-                  <span className="font-mono text-[13px] text-white">
+                  <span className="font-mono text-[13px] text-foreground">
                     Accepting Projects
                   </span>
                 </div>
                 <a
                   href="mailto:contact@paulsen.dev"
-                  className={`mt-3 block font-mono text-[12px] text-white/55 transition-colors duration-200 hover:text-white ${linkFocus}`}
+                  className={`mt-3 block font-mono text-[12px] text-muted-foreground transition-colors duration-200 hover:text-foreground ${linkFocus}`}
                 >
                   contact@paulsen.dev
                 </a>
@@ -164,15 +159,15 @@ export function Header() {
 
               {/* Center: Featured project */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   Featured Project
                 </p>
                 <a href="#contact" className={`group mt-4 block ${linkFocus}`}>
-                  <div className="aspect-[16/9] w-full overflow-hidden rounded-lg bg-gradient-to-br from-neutral-700 to-neutral-900 transition-transform duration-500 group-hover:scale-[1.02]" />
-                  <p className="mt-3 font-mono text-[13px] font-medium text-white">
+                  <div className="aspect-[16/9] w-full overflow-hidden rounded-lg bg-gradient-to-br from-surface-elevated to-surface transition-transform duration-500 group-hover:scale-[1.02]" />
+                  <p className="mt-3 font-mono text-[13px] font-medium text-foreground">
                     WKNDHRS
                   </p>
-                  <p className="mt-1 font-mono text-[11px] text-white/55">
+                  <p className="mt-1 font-mono text-[11px] text-muted-foreground">
                     Agency Website &middot; Portfolio
                   </p>
                 </a>
@@ -180,17 +175,17 @@ export function Header() {
 
               {/* Right: Team & Socials */}
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   The Studio
                 </p>
-                <p className="mt-4 font-mono text-[13px] text-white">
+                <p className="mt-4 font-mono text-[13px] text-foreground">
                   Julian &amp; Adrian
                 </p>
-                <p className="mt-1 font-mono text-[11px] text-white/55">
+                <p className="mt-1 font-mono text-[11px] text-muted-foreground">
                   Founders, Paulsen Studio
                 </p>
                 <div className="mt-6">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                     Socials
                   </p>
                   <div className="mt-3 flex gap-4">
@@ -198,7 +193,7 @@ export function Header() {
                       <a
                         key={social.label}
                         href={social.href}
-                        className={`font-mono text-[12px] text-white/55 transition-colors duration-200 hover:text-white ${linkFocus}`}
+                        className={`font-mono text-[12px] text-muted-foreground transition-colors duration-200 hover:text-foreground ${linkFocus}`}
                       >
                         {social.label}
                       </a>
