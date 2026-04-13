@@ -27,7 +27,7 @@ export function Button({
 
   const variants = {
     primary:
-      `bg-accent text-white hover:bg-accent-hover ${focusRing}`,
+      `bg-accent-hover text-white hover:brightness-110 active:brightness-95 ${focusRing}`,
     outline:
       `border border-foreground/20 text-foreground hover:border-foreground/40 hover:bg-foreground/5 ${focusRing}`,
     ghost: `text-muted hover:text-foreground ${focusRing}`,

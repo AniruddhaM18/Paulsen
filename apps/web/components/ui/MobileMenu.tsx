@@ -12,31 +12,39 @@ const NAV_LINKS = [
 const linkFocus =
   "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark";
 
-export function MobileMenu() {
+type MobileMenuProps = {
+  /** Light hamburger strokes for use on a dark fixed header bar */
+  hamburgerOnDarkBar?: boolean;
+};
+
+export function MobileMenu({ hamburgerOnDarkBar = false }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
+
+  const closedBar =
+    hamburgerOnDarkBar ? "bg-white" : "bg-foreground";
 
   return (
     <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="relative z-50 flex h-10 w-10 items-center justify-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className={`relative z-50 flex h-10 w-10 items-center justify-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+          hamburgerOnDarkBar
+            ? "focus-visible:ring-offset-bg-dark"
+            : "focus-visible:ring-offset-background"
+        }`}
         aria-label="Toggle menu"
         aria-expanded={open}
       >
         <div className="flex flex-col gap-[5px]">
           <span
             className={`block h-px w-5 transition-all duration-300 ${
-              open
-                ? "translate-y-[3px] rotate-45 bg-white"
-                : "bg-foreground"
+              open ? "translate-y-[3px] rotate-45 bg-white" : closedBar
             }`}
           />
           <span
             className={`block h-px w-5 transition-all duration-300 ${
-              open
-                ? "-translate-y-[3px] -rotate-45 bg-white"
-                : "bg-foreground"
+              open ? "-translate-y-[3px] -rotate-45 bg-white" : closedBar
             }`}
           />
         </div>
