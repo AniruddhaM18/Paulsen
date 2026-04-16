@@ -5,17 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/Button";
 import { MobileMenu } from "../ui/MobileMenu";
 import { PageContainer } from "../ui/PageContainer";
-
-const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "Contact", href: "#contact" },
-];
-
-const SOCIALS = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
-];
+import { NAV_LINKS, SOCIALS } from "@/lib/nav-links";
 
 const TOP_REVEAL_PX = 18;
 const SCROLL_DELTA_PX = 8;
@@ -162,7 +152,7 @@ export function Header() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   Featured Project
                 </p>
-                <a href="#contact" className={`group mt-4 block ${linkFocus}`}>
+                <a href="#work" className={`group mt-4 block ${linkFocus}`}>
                   <div className="aspect-[16/9] w-full overflow-hidden rounded-lg bg-gradient-to-br from-surface-elevated to-surface transition-transform duration-500 group-hover:scale-[1.02]" />
                   <p className="mt-3 font-mono text-[13px] font-medium text-foreground">
                     WKNDHRS

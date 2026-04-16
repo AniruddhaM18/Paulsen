@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./Button";
-
-const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "Contact", href: "#contact" },
-];
+import { NAV_LINKS } from "@/lib/nav-links";
 
 const linkFocus =
   "rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";

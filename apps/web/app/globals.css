@@ -25,8 +25,15 @@
   --secondary-600: #16a34a;
   --secondary-700: #15803d;
 
+  --tertiary-400: #818cf8;
+  --tertiary-500: #6366f1;
+  --tertiary-600: #4f46e5;
+
   --secondary: var(--secondary-500);
   --secondary-foreground: #0a0a0a;
+
+  --surface-subtle: #0f0f0f;
+  --section-spacing: clamp(5rem, 12vw, 10rem);
 
   --accent: var(--secondary-500);
   --accent-hover: var(--secondary-600);
@@ -69,9 +76,15 @@
   --color-secondary-600: var(--secondary-600);
   --color-secondary-700: var(--secondary-700);
 
+  --color-tertiary-400: var(--tertiary-400);
+  --color-tertiary-500: var(--tertiary-500);
+  --color-tertiary-600: var(--tertiary-600);
+
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
+
+  --color-surface-subtle: var(--surface-subtle);
 
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -145,6 +158,11 @@ body {
     0 1px 0 rgba(255, 255, 255, 0.04),
     0 36px 80px -16px rgba(0, 0, 0, 0.80),
     0 14px 36px -10px rgba(0, 0, 0, 0.55);
+}
+
+@utility section-pad {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
 }
 
 @keyframes fade-up {

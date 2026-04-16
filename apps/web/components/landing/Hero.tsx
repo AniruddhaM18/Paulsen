@@ -127,7 +127,10 @@ export function Hero() {
               transition={{ duration: 0.85, ease: [0.25, 0.1, 0.25, 1] }}
               className="font-display text-[clamp(2.25rem,6vw,4.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-foreground"
             >
-              Paulsen
+              Websites
+              <br />
+              That{" "}
+              <span className="text-secondary">Move</span>
             </motion.h1>
 
             <motion.div
@@ -141,11 +144,10 @@ export function Hero() {
               className="mt-6 max-w-md lg:mt-8"
             >
               <p className="text-[15px] leading-relaxed text-muted-foreground md:text-base">
-                Stepping into Web3.
-                <br />
-                Websites that move. Built by people who care about craft.
+                Frontend development studio. We build interactive, craft-focused
+                websites for brands that demand more than a template.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Button href="#contact" variant="primary" size="sm">
                   Get in touch
                   <svg
@@ -161,6 +163,9 @@ export function Hero() {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
+                </Button>
+                <Button href="#work" variant="outline" size="sm">
+                  View Our Work
                 </Button>
               </div>
             </motion.div>

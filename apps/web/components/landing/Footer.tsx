@@ -1,16 +1,6 @@
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { HyperScrollScene } from "./HyperScrollScene";
-
-const PAGES = [
-  { label: "Home", href: "#" },
-  { label: "Contact", href: "#contact" },
-];
-
-const SOCIALS = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
-];
+import { NAV_LINKS, SOCIALS } from "@/lib/nav-links";
 
 const CONTACT_EMAILS = [
   "contact@paulsen.dev",
@@ -75,7 +65,7 @@ export function Footer() {
                     Pages
                   </p>
                   <ul className="mt-3 space-y-2.5">
-                    {PAGES.map((link) => (
+                    {NAV_LINKS.map((link) => (
                       <li key={link.label}>
                         <a
                           href={link.href}
