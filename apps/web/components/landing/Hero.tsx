@@ -18,8 +18,8 @@ const BEAM_SPOTLIGHT_HALF_WIDTH_NORM = 0.12;
 const LASER_BEAM_COLOR = "#6ee7a5";
 
 const LASER_PROPS = {
-  horizontalSizing: 0.5,
-  verticalSizing: 12,
+  horizontalSizing: 0.45,
+  verticalSizing: 4,
   wispDensity: 1,
   wispSpeed: 15,
   wispIntensity: 5,
@@ -29,8 +29,8 @@ const LASER_PROPS = {
   fogScale: 0.3,
   fogFallSpeed: 0.6,
   decay: 1.1,
-  falloffStart: 1.2,
-  verticalBeamOffset: -0.20,
+  falloffStart: 1.6,
+  verticalBeamOffset: -0.34, 
 } as const;
 
 export function Hero() {
