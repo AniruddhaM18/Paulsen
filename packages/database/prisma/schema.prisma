@@ -16,3 +16,124 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
 }
+
+// ─── TOKEN REGISTRY ───
+
+model Token {
+  id          String   @id @default(cuid())
+  mint        String   @unique
+  symbol      String
+  name        String
+  decimals    Int
+  logoURI     String?
+  coingeckoId String?
+  tags        String[] @default([])
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  poolsAsTokenA  Pool[]          @relation("PoolTokenA")
+  poolsAsTokenB  Pool[]          @relation("PoolTokenB")
+  priceSnapshots PriceSnapshot[]
+
+  @@index([symbol])
+  @@index([active])
+}
+
+// ─── POOL / MARKET ───
+
+model Pool {
+  id           String    @id @default(cuid())
+  poolAddress  String    @unique
+  dexSource    DexSource
+  tokenAMint   String
+  tokenBMint   String
+  tokenA       Token     @relation("PoolTokenA", fields: [tokenAMint], references: [mint])
+  tokenB       Token     @relation("PoolTokenB", fields: [tokenBMint], references: [mint])
+  fee          Float
+  liquidity    Float     @default(0)
+  volume24h    Float     @default(0)
+  lastSyncedAt DateTime?
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([tokenAMint, tokenBMint])
+  @@index([dexSource])
+  @@index([active])
+}
+
+enum DexSource {
+  RAYDIUM
+  ORCA
+  METEORA
+  LIFINITY
+}
+
+// ─── SWAP HISTORY ───
+
+model SwapRecord {
+  id             String      @id @default(cuid())
+  walletAddress  String
+  inputMint      String
+  outputMint     String
+  inputAmount    String
+  outputAmount   String
+  expectedOutput String?
+  slippageBps    Int
+  routeSource    RouteSource
+  routeDetails   Json?
+  txSignature    String?     @unique
+  status         SwapStatus  @default(PENDING)
+  errorMessage   String?
+  executedAt     DateTime?
+  createdAt      DateTime    @default(now())
+
+  @@index([walletAddress])
+  @@index([createdAt])
+  @@index([status])
+}
+
+enum RouteSource {
+  JUPITER
+  OKX
+  CUSTOM_ENGINE
+}
+
+enum SwapStatus {
+  PENDING
+  SUBMITTED
+  CONFIRMED
+  FAILED
+}
+
+// ─── PRICE SNAPSHOTS ───
+
+model PriceSnapshot {
+  id        String   @id @default(cuid())
+  tokenMint String
+  token     Token    @relation(fields: [tokenMint], references: [mint])
+  priceUsd  Float
+  source    String   @default("coingecko")
+  timestamp DateTime @default(now())
+
+  @@index([tokenMint, timestamp])
+  @@index([timestamp])
+}
+
+// ─── ROUTE CACHE ───
+
+model CachedRoute {
+  id           String      @id @default(cuid())
+  inputMint    String
+  outputMint   String
+  inputAmount  String
+  routeSource  RouteSource
+  outputAmount String
+  routeData    Json
+  expiresAt    DateTime
+  createdAt    DateTime    @default(now())
+
+  @@index([inputMint, outputMint, inputAmount])
+  @@index([expiresAt])
+}
